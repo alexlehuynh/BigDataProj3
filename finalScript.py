@@ -10,14 +10,14 @@ from sklearn.metrics import accuracy_score
 import seaborn as sns
 import numpy as np
 
-# 1. Reading the file into a pandas dataframe
+# Question 1. Reading the file into a pandas dataframe
 df = pd.read_csv('breast-cancer.csv')
 
 # can remove this later just using for testing purposes
 print("Dataframe shape after reading the CSV file:", df.shape)
 
 
-# 2. Remove any row which contain empty cell(s) "Bad Data".  Split into 80% training set and 20% testing
+# Question 2. Remove any row which contain empty cell(s) "Bad Data".  Split into 80% training set and 20% testing
 
 df = df.dropna() #removes rows with empty cells
 
@@ -31,7 +31,7 @@ y = df['diagnosis']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 
-# 3. Modeling and Evaluations - Decision Tree Classifier
+# Question 3. Modeling and Evaluations - Decision Tree Classifier
 # Train the dataset on the Decision Tree Classifier using the training set
 start_time = time.time()
 clf_tree = DecisionTreeClassifier(random_state=42)
@@ -64,7 +64,7 @@ print(f"Specificity for class 0: {specificity_0:.2f}")
 print(f"Specificity for class 1: {specificity_1:.2f}")
 
 
-# 4. Modeling and Evaluations - Support Vector Machine (RBF) Classifier
+# Question 4. Modeling and Evaluations - Support Vector Machine (RBF) Classifier
 
 # Train the dataset on the Support Vector Machine (RBF) Classifier
 start_time = time.time()
@@ -94,7 +94,7 @@ specificity_1 = tp / (tp + fn)
 print(f"Specificity for class 0: {specificity_0:.2f}")
 print(f"Specificity for class 1: {specificity_1:.2f}")
 
-
+# Question 6
 # Find feature importance using Random Forest
 rf_clf = RandomForestClassifier(n_estimators=100, random_state=42)
 rf_clf.fit(X_train, y_train)
